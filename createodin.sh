@@ -10,10 +10,16 @@ then
 	exit 1
 fi
 
+if [[ $2 != "" ]]
+then
+	TAR=$2
+else
+	TAR=`basename $1`
+fi
+
 echo "Remember to name the file the same name you want"
 echo "the odin tar.md5. Otherwise odin will fail"
 echo "For example: instead of recovery.md5, openrecovery-twrp-2.3.0.3-sgh-i717.img"
-TAR=`basename $1`
 cp $1 /tmp/recovery.img
 cd /tmp
 #tar -H ustar -c $TAR > /tmp/$TAR.tar

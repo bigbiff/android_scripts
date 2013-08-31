@@ -3,7 +3,7 @@
 TWRPCM10REPO=/data/repos/cm10-twrp
 TWRPCM101REPO=/builds/cm10.1-twrp
 TWRPOUTDIR=/home/bigbiff/twrp
-cm101devices=('n7100' 't0ltecan' 't0lte' 't0ltetmo' 't0lteatt' 't0ltespr' 't0ltevzw' 't03gduoszn' 't0lteskt' 't0ltektt' 't03gub')
+cm101devices=('t03g' 't0ltecan' 't0lte' 't0ltetmo' 't0lteatt' 't0ltespr' 't0ltevzw' 't03gduoszn' 't0lteskt' 't0ltektt' 't03gub' 't0lteusc')
 cm10devices=('quincyatt' 'quincytmo')
 
 contains() {
@@ -52,7 +52,7 @@ do
 	fi
 	. ./build/envsetup.sh
 	lunch cm_$dev-eng  > /dev/null 2>&1
-	make clobber && make recoveryimage -j7 > /dev/null  2>&1
+	make clobber && make recoveryimage -j7 > /home/bigbiff/twrp/logs/build-$dev.log  2>&1
 	cp out/target/product/$dev/recovery.img $TWRPOUTDIR/openrecovery-twrp-$ver-$dev.img
 	createodin.sh $TWRPOUTDIR/openrecovery-twrp-$ver-$dev.img
 	bash -x createtwrpzip.sh $TWRPOUTDIR/openrecovery-twrp-$ver-$dev.img $TWRPOUTDIR/recovery-$dev.zip
